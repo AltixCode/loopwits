@@ -18,9 +18,12 @@ Last updated: 2026-09-15
 | Every generated puzzle uniquely solvable | ✅ | asserted per type and for whole days in `daily.test.ts` |
 | CI green on a self-hosted runner | ⬜ | not yet run |
 | `check:release` with real identifiers | ⬜ | identifiers are in repo secrets; not yet exercised in a build |
-| Builds, installs, launches on the iOS simulator | 🔨 | prebuild in progress |
-| Renders in light **and** dark on device | ⬜ | |
-| Every feature driven on the Android emulator | ⬜ | |
+| Builds, installs, launches on the iOS simulator | ✅ | `Build Succeeded, 0 error(s)`; launched on iPhone 17, PID alive, hub rendered |
+| Builds, installs, launches on the Android emulator | ✅ | build exit code checked (a first attempt failed in seconds and installed nothing); `pm list packages` confirms |
+| Renders in light **and** dark on device | ✅ | screenshots in both appearances on both platforms |
+| Tap interaction driven on the Android emulator | ✅ | a Rulers cell cycles empty → crossed → marker → empty, screenshotted at each step |
+| **Drag-to-draw driven on the Android emulator** | ✅ | swiping from dot 1 draws the path across the cells the finger crossed; no "Remote Function" error in logcat |
+| Puzzle generation runs on device | ✅ | an 8×8 Rulers region map and a 6×6 OneLine board with ten dots both rendered from the on-device generator |
 | Purchase flow exercised against a real offering | ⬜ | RevenueCat catalogue exists; no store product yet |
 | Ads served under real consent | ⬜ | units exist; no consent message published yet |
 
@@ -34,6 +37,7 @@ Last updated: 2026-09-15
 | Play Console app | ⬜ | |
 | Play AAB uploaded (internal) | ⬜ | |
 | Play in-app product | ⬜ | blocked until the first AAB is uploaded |
+| AdMob app id reaches the binary | ✅ | `GADApplicationIdentifier` in the built app reads `ca-app-pub-2504845459806550~5555146751` |
 | AdMob app (iOS) | ✅ | `ca-app-pub-2504845459806550~5555146751` |
 | AdMob app (Android) | ✅ | `ca-app-pub-2504845459806550~4327668870` |
 | AdMob ad units (6) | ✅ | banner / interstitial / rewarded per platform |
@@ -48,9 +52,23 @@ Last updated: 2026-09-15
 
 ## Known UNKNOWNs
 
-- Nothing has run on a device. Worklets are invisible to Jest, and the OneLine
-  drag is the most likely place for a runtime-only failure — its hit-testing is
-  deliberately on the JS thread for that reason, but that is an argument, not a
-  measurement.
-- Generation cost is bounded but not trivial: a hard day takes a few hundred
-  milliseconds on a laptop. It has not been measured on a low-end Android.
+- **The purchase flow has never been exercised.** RevenueCat has the catalogue
+  but no store product exists yet, so the paywall has nothing to price.
+- **Ads have never been served.** The units exist, but no AdMob consent message
+  is published, and the SDK can only present a message that exists — so in the
+  EEA the app would show no ads at all. That is a console task, by hand.
+- **The iOS ATT prompt could not be dismissed**, so iOS verification stops at
+  build / install / launch / render, exactly as the playbook says it must:
+  Simulator.app is missing from this Xcode install, `simctl` has no tap, and
+  `simctl privacy … user-tracking` returns "Operation not permitted".
+- Generation cost was not measured on a low-end device. It is a few hundred
+  milliseconds for a hard day on this laptop, and the boards rendered without a
+  visible stall on the emulator, but that is not a measurement.
+
+### A false alarm worth remembering
+
+The first launch check reported "UIScene adoption missing". It was wrong: the
+`log show` predicate matched **its own command line** in the device log, because
+the argument string contains the phrase being searched for. The app was alive
+the whole time. Match on the app's process, not on a substring that the query
+itself puts into the log.
