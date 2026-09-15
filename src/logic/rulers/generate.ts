@@ -1,5 +1,5 @@
 import { makeRng, shuffled, type Rng } from '../rng';
-import { countSolutions, findSolutions } from './solve';
+import { findSolutions } from './solve';
 import type { RulersPuzzle } from './validate';
 
 /**

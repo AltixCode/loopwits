@@ -110,6 +110,27 @@ export const darkPalette: Palette = {
 };
 
 /**
+ * Region hues for the Rulers grid.
+ *
+ * Eight, so an 8x8 board never repeats one. They are blended against the
+ * surface colour before use (see `mix`) rather than drawn at low opacity: the
+ * cells sit on a gap-coloured ground, and translucency would let that ground
+ * show through and shift every tint. Regions are also distinguishable by
+ * position, never by colour alone — colour is how the board is read quickly,
+ * not how it is solved.
+ */
+export const REGION_HUES = [
+  '#7C5CFF',
+  '#0EA5E9',
+  '#10B981',
+  '#F59E0B',
+  '#EC4899',
+  '#8B5CF6',
+  '#14B8A6',
+  '#F97316',
+] as const;
+
+/**
  * Motion. Durations are short and purposeful; exits are faster than entrances because a
  * leaving element should not hold the user up.
  */

@@ -1,5 +1,5 @@
 import { contrastRatio, luminance, mix, readableTextOn, withAlpha } from '../color';
-import { darkPalette, lightPalette } from '../tokens';
+import { REGION_HUES, darkPalette, lightPalette } from '../tokens';
 
 describe('mix', () => {
   it('returns the background at 0 and the colour at 1', () => {
@@ -85,5 +85,21 @@ describe('palette accessibility', () => {
     ['dark accent', darkPalette.accent, darkPalette.onAccent],
   ])('%s carries readable text on a filled button', (_label, accent, on) => {
     expect(contrastRatio(accent, on)).toBeGreaterThanOrEqual(4.5);
+  });
+});
+
+describe('region tints', () => {
+  it.each([
+    ['light', lightPalette],
+    ['dark', darkPalette],
+  ])('keep the %s marker readable on every region', (_label, palette) => {
+    // The marker is drawn in `text` on top of a region tint. A hue that blends
+    // too close to the surface would make a placed marker invisible on one
+    // region and fine on the other seven — the kind of defect that only shows
+    // up on the one board that uses it.
+    for (const hue of REGION_HUES) {
+      const tint = mix(hue, palette.surface, 0.26);
+      expect(contrastRatio(palette.text, tint)).toBeGreaterThanOrEqual(4.5);
+    }
   });
 });

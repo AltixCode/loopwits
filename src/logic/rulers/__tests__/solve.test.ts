@@ -1,5 +1,5 @@
 import { countSolutions, solve } from '../solve';
-import { isSolved, type RulersPuzzle } from '../validate';
+import { isSolved, type RulersBoard, type RulersCell, type RulersPuzzle } from '../validate';
 
 const QUADRANTS: RulersPuzzle = {
   size: 4,
@@ -22,9 +22,9 @@ const COLUMNS: RulersPuzzle = {
   ],
 };
 
-function boardFrom(columns: number[]) {
-  return columns.map((marked, _r) =>
-    Array.from({ length: columns.length }, (_, c) => (c === marked ? 'marker' : 'empty') as const),
+function boardFrom(columns: number[]): RulersBoard {
+  return columns.map((marked) =>
+    Array.from({ length: columns.length }, (_, c): RulersCell => (c === marked ? 'marker' : 'empty')),
   );
 }
 

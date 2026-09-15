@@ -53,6 +53,9 @@ function RootNavigator() {
         }}
       >
         <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="play/[kind]" options={{ title: '' }} />
+        <Stack.Screen name="archive" options={{ title: t('archiveTitle') }} />
+        <Stack.Screen name="stats" options={{ title: t('statsTitle') }} />
         <Stack.Screen name="settings" options={{ title: t('settingsTitle') }} />
         <Stack.Screen
           name="paywall"
