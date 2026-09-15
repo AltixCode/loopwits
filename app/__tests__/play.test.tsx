@@ -15,6 +15,17 @@ import { useProgressStore } from '@/store/useProgressStore';
 const DATE = '2026-09-18';
 const DAY = puzzlesFor(DATE);
 
+/** The first cell matching a predicate, or null. */
+function firstCell<T>(grid: T[][], matches: (cell: T) => boolean): { r: number; c: number } | null {
+  for (let r = 0; r < grid.length; r += 1) {
+    const row = grid[r]!;
+    for (let c = 0; c < row.length; c += 1) {
+      if (matches(row[c]!)) return { r, c };
+    }
+  }
+  return null;
+}
+
 beforeEach(() => {
   jest.clearAllMocks();
   usePremiumStore.setState({ isPremium: false, isReady: true });
@@ -94,13 +105,10 @@ describe('Play — Duo', () => {
   });
 
   it('does not let a given cell be changed', async () => {
+    // Plain loops, not forEach: TypeScript's control-flow analysis cannot see an
+    // assignment made inside a closure, and narrows the result to `never`.
     const given = DAY.duo.puzzle.given;
-    let found: { r: number; c: number } | null = null;
-    given.forEach((row, r) =>
-      row.forEach((cell, c) => {
-        if (cell && !found) found = { r, c };
-      }),
-    );
+    const found = firstCell(given, (cell) => Boolean(cell));
     if (!found) return; // A puzzle with no givens is legal; nothing to assert.
     const { getByLabelText } = await renderWithProviders(<Play />);
     const label = new RegExp(t('cellA11y', { row: found.r + 1, col: found.c + 1 }));
@@ -108,13 +116,7 @@ describe('Play — Duo', () => {
   });
 
   it('cycles an empty cell through sun and moon', async () => {
-    const given = DAY.duo.puzzle.given;
-    let open: { r: number; c: number } | null = null;
-    given.forEach((row, r) =>
-      row.forEach((cell, c) => {
-        if (!cell && !open) open = { r, c };
-      }),
-    );
+    const open = firstCell(DAY.duo.puzzle.given, (cell) => !cell);
     const { getByLabelText } = await renderWithProviders(<Play />);
     const at = open!;
     const label = (state: string) => `${t('cellA11y', { row: at.r + 1, col: at.c + 1 })}, ${state}`;
