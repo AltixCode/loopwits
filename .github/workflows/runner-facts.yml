@@ -1,0 +1,22 @@
+name: Runner facts
+
+# Answers one question the portfolio keeps guessing at: what Xcode is actually
+# installed on the self-hosted macOS runner. An archive built with a beta seed
+# signs, uploads and reads VALID -- and is refused at submission -- so this has
+# to be read off the runner rather than assumed.
+on:
+  workflow_dispatch:
+
+jobs:
+  facts:
+    runs-on: [self-hosted, macOS, ARM64]
+    steps:
+      - name: Report the toolchain
+        run: |
+          echo "runner:  $(scutil --get ComputerName 2>/dev/null || hostname)"
+          echo "selected: $(xcode-select -p)"
+          xcodebuild -version
+          echo "--- installed ---"
+          ls /Applications | grep -i xcode || echo "no Xcode in /Applications"
+          echo "--- SDKs ---"
+          xcodebuild -showsdks | grep -i iphoneos || true
