@@ -1,74 +1,141 @@
 # Loopwits — handoff
 
-What was actually run, and what is still unknown. **Unverified is `UNKNOWN`,
-never a pass** — a green build is not a verification.
+> Written 2026-09-15. **Unverified is UNKNOWN, never a pass** — a green build is
+> not a verification. Every row below says what was actually run.
 
-Last updated: 2026-09-15
+**Loopwits** — three daily logic puzzles under one streak.
+Plan: `/Volumes/ExtremePro/Dev/next_mobile_apps/PLAN.md` (PLAN.md §1).
+Portfolio rules: `Dev/AGENTS.md`, then `Dev/docs/agents/18-app-lifecycle.md`.
+
+## State at a glance
+
+| | |
+|---|---|
+| Stage | **Feature-complete**, not yet released |
+| Tests | 391 passing |
+| Device pass | ✅ built, launched and driven on iOS simulator + Android emulator |
+| Released | ⬜ no |
 
 ## Verification state
 
-| Gate | State | Evidence |
-|---|---|---|
-| Lint | ✅ | `npm run lint` — clean |
-| Typecheck | ✅ | `npx tsc --noEmit` — clean |
-| Unit tests | ✅ | 378 passing, 30 suites |
-| i18n completeness (14 locales) | ✅ | `check-i18n: 14 locales × 91 keys — complete` |
-| UI rules (colour tokens, `t()`) | ✅ | `check-ui-rules: 19 files clean` |
-| iOS + Android bundle export | ✅ | both `expo export` runs succeeded; iOS bundle 5.5 MB |
-| Every generated puzzle uniquely solvable | ✅ | asserted per type and for whole days in `daily.test.ts` |
-| CI green on a self-hosted runner | ⬜ | not yet run |
-| `check:release` with real identifiers | ⬜ | identifiers are in repo secrets; not yet exercised in a build |
-| Builds, installs, launches on the iOS simulator | ✅ | `Build Succeeded, 0 error(s)`; launched on iPhone 17, PID alive, hub rendered |
-| Builds, installs, launches on the Android emulator | ✅ | build exit code checked (a first attempt failed in seconds and installed nothing); `pm list packages` confirms |
-| Renders in light **and** dark on device | ✅ | screenshots in both appearances on both platforms |
-| Tap interaction driven on the Android emulator | ✅ | a Rulers cell cycles empty → crossed → marker → empty, screenshotted at each step |
-| **Drag-to-draw driven on the Android emulator** | ✅ | swiping from dot 1 draws the path across the cells the finger crossed; no "Remote Function" error in logcat |
-| Puzzle generation runs on device | ✅ | an 8×8 Rulers region map and a 6×6 OneLine board with ten dots both rendered from the on-device generator |
-| Purchase flow exercised against a real offering | ⬜ | RevenueCat catalogue exists; no store product yet |
-| Ads served under real consent | ⬜ | units exist; no consent message published yet |
+| Gate | State |
+|---|---|
+| Lint | ✅ |
+| Typecheck | ✅ |
+| Unit tests (391) | ✅ |
+| i18n completeness — 14 locales | ✅ |
+| UI rules — colour tokens, `t()` | ✅ |
+| iOS + Android bundle export | ✅ |
+| CI on a self-hosted runner | 🔨 running when this was written — re-check with `gh run list` |
+| `check:release` with real identifiers | ✅ passes in CI |
+| Builds / launches on the iOS simulator | ✅ |
+| Interaction driven on the Android emulator | ✅ |
+| Light **and** dark checked on device | ✅ |
+| Purchase flow against a real offering | ⬜ no store product exists yet |
+| Ads served under real consent | ⬜ no consent message published yet |
 
-## Store and service state
+## What is built
 
-| | State | Id |
-|---|---|---|
-| Bundle id registered | ✅ | `com.altixcode.loopwits` (`Z5BM7AQV3T`) |
-| App Store Connect record | ⬜ | needs a browser login |
-| iOS IAP created and priced | ⬜ | blocked on the ASC record |
-| Play Console app | ⬜ | |
-| Play AAB uploaded (internal) | ⬜ | |
-| Play in-app product | ⬜ | blocked until the first AAB is uploaded |
-| AdMob app id reaches the binary | ✅ | `GADApplicationIdentifier` in the built app reads `ca-app-pub-2504845459806550~5555146751` |
-| AdMob app (iOS) | ✅ | `ca-app-pub-2504845459806550~5555146751` |
-| AdMob app (Android) | ✅ | `ca-app-pub-2504845459806550~4327668870` |
-| AdMob ad units (6) | ✅ | banner / interstitial / rewarded per platform |
-| AdMob GDPR + US-states messages | ⬜ | **must be published by hand** — without one the SDK has no message to present and serves no ads in the EEA |
-| RevenueCat project | ✅ | `projc63c253e` (a stray duplicate `projf8cc9e68` needs deleting in the dashboard) |
-| RevenueCat entitlement / offering / package | ✅ | `remove_ads` / `default` / `$rc_lifetime` |
-| RevenueCat SDK keys in repo secrets | ✅ | iOS + Android |
+**Loopwits is feature-complete and every device-free gate is green.**
 
-## Decisions the owner owns
+- Game engines: Rulers (region placement), Duo (binary grid), OneLine (Hamiltonian path)
+- Screens: hub, play (all three types), archive, stats, settings, paywall
+- 391 tests, all passing
+- Free tier: archive limited to the last 7 days; 1 hint per puzzle per day
 
-- Publish on altixcode.com and itsata.com? **Not yet asked.**
+Run `npm run verify` to re-prove all of it in one command.
 
-## Known UNKNOWNs
+## What is left
 
-- **The purchase flow has never been exercised.** RevenueCat has the catalogue
-  but no store product exists yet, so the paywall has nothing to price.
-- **Ads have never been served.** The units exist, but no AdMob consent message
-  is published, and the SDK can only present a message that exists — so in the
-  EEA the app would show no ads at all. That is a console task, by hand.
-- **The iOS ATT prompt could not be dismissed**, so iOS verification stops at
-  build / install / launch / render, exactly as the playbook says it must:
-  Simulator.app is missing from this Xcode install, `simctl` has no tap, and
-  `simctl privacy … user-tracking` returns "Operation not permitted".
-- Generation cost was not measured on a low-end device. It is a few hundred
-  milliseconds for a hard day on this laptop, and the boards rendered without a
-  visible stall on the emulator, but that is not a measurement.
+1. **Device pass** — `npm run verify:device`. Already done once (see the table above); repeat before any release build.
+2. **Screenshots** — capture from the running app during that device pass. They
+   are the one store asset that cannot be produced ahead of time.
+3. **Store records** — see "Blocked on a person" below.
+4. **Submit** — `npm run build:production` then `npm run submit:production`.
 
-### A false alarm worth remembering
+## Identifiers — already provisioned, do not recreate
 
-The first launch check reported "UIScene adoption missing". It was wrong: the
-`log show` predicate matched **its own command line** in the device log, because
-the argument string contains the phrase being searched for. The app was alive
-the whole time. Match on the app's process, not on a substring that the query
-itself puts into the log.
+Changing a bundle id means deleting and recreating the RevenueCat app, which
+**invalidates its public SDK keys**. These are settled.
+
+| | |
+|---|---|
+| Bundle id / package | `com.altixcode.loopwits` |
+| Scheme | `loopwits://` |
+| GitHub | `AltixCode/loopwits` |
+| RevenueCat project | `projc63c253e` |
+| RevenueCat iOS app | `app2e6e207887` |
+| RevenueCat Android app | `app661d587d1f` |
+| Entitlement | `remove_ads` (`entla127c6b79f`) |
+| Offering / package | `default` (`ofrng66b7ab802e`) / `$rc_lifetime` (`pkgea52ad63f3b`) |
+| AdMob app (iOS) | `ca-app-pub-2504845459806550~5555146751` |
+| AdMob app (Android) | `ca-app-pub-2504845459806550~4327668870` |
+| AdMob banner (iOS / Android) | `ca-app-pub-2504845459806550/2346082377` / `ca-app-pub-2504845459806550/9244953632` |
+| AdMob interstitial (iOS / Android) | `ca-app-pub-2504845459806550/5826162386` / `ca-app-pub-2504845459806550/6618790291` |
+| AdMob rewarded (iOS / Android) | `ca-app-pub-2504845459806550/6259697646` / `ca-app-pub-2504845459806550/6772859651` |
+
+All ten release identifiers plus `EXPO_TOKEN` are already GitHub repo secrets.
+Locally they come from `/Volumes/ExtremePro/Dev/.admob-ids/loopwits.env` —
+never commit that file.
+
+## Blocked on a person — cannot be scripted
+
+These three have no write API at all. Browser sessions live in the Playwright
+MCP profile (`~/Library/Caches/ms-playwright-mcp/`).
+
+1. **App Store Connect record** — the session was expired on 2026-09-15 and
+   **needs a sign-in**. Then:
+   `asc iris apps create --name "Loopwits" --bundle-id com.altixcode.loopwits --sku loopwits-ios`
+   The bundle id is already registered. Everything after the record — IAP,
+   pricing, localisations — is scriptable.
+2. **Play Console app.** A Play app has **no package name until its first bundle
+   is uploaded**, so the order is: create app → upload an AAB to internal testing
+   → *then* create the `remove_ads` product. Build that first AAB from a
+   **non-production** profile so testers generate no live ad impressions.
+3. **AdMob GDPR + US-states consent messages.** The apps and all six ad units
+   exist, but **no consent message is published**. The SDK can only present a
+   message that exists, and this app fails closed — so in the EEA it currently
+   shows **no ads at all**. Publish both under Privacy & messaging.
+
+Also expect **"Requires review — limited ad serving"** on every new AdMob app
+for a few days. That is normal, not an integration fault.
+
+## Decisions that are the owner's, not an agent's
+
+- Publish on altixcode.com and itsata.com? **Not yet asked.** Procedure:
+  `docs/agents/14-portfolio-demos.md`.
+- App Store name. Casual and puzzle names are heavily contested; budget several
+  attempts. Apple checks the whole title string, so `Name: Descriptor` often
+  clears when the bare name does not. ASC names stay editable until first release.
+
+## Traps already paid for — do not rediscover
+
+- `npm run test:ci` enforces coverage thresholds; a plain `jest` run does not.
+  CI has caught this twice.
+- **A coverage shortfall in CI may not be about coverage.** Jest's default worker
+  count exhausted the shared runner's file descriptors — `ENFILE: file table
+  overflow` — and three suites failed to LOAD, so their files went uncovered and
+  the job blamed the thresholds. `test:ci` runs `--runInBand` for this reason;
+  do not remove it.
+- **`package-lock.json` must be committed.** Without it every job dies at
+  setup-node with "Dependencies lock file is not found", and `npm ci` cannot run
+  at all. Generate one without installing: `npm install --package-lock-only`.
+- RNTL 14: `render` and `fireEvent` are async — **await both**. Put each
+  screen's tests in its own file, and never call `jest.restoreAllMocks()` in a
+  screen test: it restores spies the renderer relies on and the next test's tree
+  is torn down as it renders.
+- Reset a board by **remounting a keyed component**, never by setState in an
+  effect — otherwise one frame shows the previous puzzle on the new board.
+- Keep gesture hit-testing on the JS thread. A worklet calling a plain JS helper
+  throws *"Tried to synchronously call a Remote Function"* on first touch:
+  invisible to Jest, fatal on device.
+- `expo run:android` wants the **AVD name**, not the adb serial, and can fail in
+  seconds leaving the previous APK installed. Always check its exit code.
+- iOS verification stops at build / install / launch / render: Simulator.app is
+  missing from this Xcode install, so the ATT prompt cannot be dismissed. **Drive
+  interaction on Android.**
+- Export `JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home`
+  for any Android build, or Gradle silently falls back to JDK 25 and CMake dies.
+- Shared code is generated. Fix it in `AltixCode/next-mobile-apps` (`_template/`)
+  and re-run `node scripts/bootstrap.mjs loopwits`, never in this copy —
+  otherwise the next regeneration reverts it.
