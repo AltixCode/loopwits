@@ -25,10 +25,12 @@ export function Board({
 
   // Leave room for the header, the toolbar and the banner: the board must never
   // be the reason a screen scrolls.
-  // A 13" iPad has room for a noticeably bigger board, and a puzzle you have to
-  // squint at on a tablet reads as a phone app nobody ever opened on one.
-  const cap = width >= 700 ? maxSide * 1.35 : maxSide;
-  const available = Math.min(width - spacing.base * 2, height * 0.52, cap);
+  // Sized from the space there is. The old flat 460pt cap was set against a
+  // small phone: on a 6.9" screen it left the board in the top third with the
+  // rest of the display empty, which reads as an app nobody has opened on a
+  // modern device — and a 13" iPad was worse.
+  const cap = width >= 700 ? maxSide * 1.5 : maxSide * 1.2;
+  const available = Math.min(width - spacing.base * 2, height * 0.58, cap);
   const gap = size > 7 ? 2 : 3;
   const side = Math.floor((available - gap * (size - 1)) / size);
   const board = side * size + gap * (size - 1);
