@@ -87,7 +87,7 @@ export default function Home() {
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
-      <Screen scroll>
+      <Screen scroll topInset>
         <View
           style={{
             flexDirection: 'row',

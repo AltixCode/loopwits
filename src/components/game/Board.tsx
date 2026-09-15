@@ -25,7 +25,10 @@ export function Board({
 
   // Leave room for the header, the toolbar and the banner: the board must never
   // be the reason a screen scrolls.
-  const available = Math.min(width - spacing.base * 2, height * 0.52, maxSide);
+  // A 13" iPad has room for a noticeably bigger board, and a puzzle you have to
+  // squint at on a tablet reads as a phone app nobody ever opened on one.
+  const cap = width >= 700 ? maxSide * 1.35 : maxSide;
+  const available = Math.min(width - spacing.base * 2, height * 0.52, cap);
   const gap = size > 7 ? 2 : 3;
   const side = Math.floor((available - gap * (size - 1)) / size);
   const board = side * size + gap * (size - 1);
