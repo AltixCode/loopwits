@@ -68,11 +68,17 @@ export default function Archive() {
                   paddingHorizontal: spacing.base,
                   borderRadius: radius.md,
                   backgroundColor: colors.surface,
-                  opacity: playable ? 1 : 0.5,
                 }}
               >
                 <Text variant="body">{key}</Text>
-                <Text variant="caption" tone={done === 3 ? 'accent' : 'muted'}>
+                {/* The PRO badge is what marks a locked day, so it is the one
+                    thing that must not be faint. Dimming the whole row to 0.5
+                    took the date to 3.64:1 and the badge to 2.19:1 -- the row
+                    said "locked" in the least legible way available. */}
+                <Text
+                  variant="caption"
+                  tone={!playable || done === 3 ? 'accent' : 'muted'}
+                >
                   {playable ? t('progressOfThree', { count: done }) : t('proBadge')}
                 </Text>
               </Pressable>
