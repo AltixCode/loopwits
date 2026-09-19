@@ -59,10 +59,14 @@ describe('Paywall', () => {
     seed({ lifetime: LIFETIME });
     const { getByText } = await renderWithProviders(<Paywall />);
     expect(getByText(t('oneTimePayment'))).toBeTruthy();
+    // The no-subscription promise is the first Q&A pair on the page: the
+    // question (`antiSubTitle`) is answered right beneath it in prose
+    // (`antiSubHeadline`).
+    expect(getByText(t('antiSubTitle'))).toBeTruthy();
     expect(getByText(t('antiSubHeadline'))).toBeTruthy();
   });
 
-  it('lists what the purchase unlocks', async () => {
+  it('lists what the purchase unlocks, as question-then-answer pairs', async () => {
     const { getByText } = await renderWithProviders(<Paywall />);
     expect(getByText(t('feat1Title'))).toBeTruthy();
     expect(getByText(t('feat1Desc'))).toBeTruthy();

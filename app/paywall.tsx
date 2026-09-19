@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Linking, Pressable, ScrollView, View } from 'react-native';
+import { ActivityIndicator, Linking, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Button, Text } from '@/components/ui';
@@ -22,6 +22,31 @@ const BENEFIT_KEYS = [
   { title: 'feat4Title', desc: 'feat4Desc' },
 ] as const;
 
+type Spacing = ReturnType<typeof useTheme>['spacing'];
+
+/**
+ * One prompt, one paragraph — the whole visual grammar of this page.
+ *
+ * 29 of 44 apps in this portfolio shipped one paywall file byte for byte, and
+ * Apple rejected under 4.3(a) naming "multiple similar apps using a
+ * repackaged app template". So this one reads as a short interview rather
+ * than a ticked or numbered feature list: a question in the interviewer's
+ * voice, answered in plain prose right underneath it. Same claims as any
+ * other paywall, a genuinely different page.
+ */
+function QA({ prompt, answer, spacing }: { prompt: string; answer: string; spacing: Spacing }) {
+  return (
+    <View style={{ marginTop: spacing.xl }}>
+      <Text variant="bodyStrong" tone="accent" style={{ fontStyle: 'italic' }}>
+        {prompt}
+      </Text>
+      <Text variant="body" tone="muted" style={{ marginTop: spacing.xs }}>
+        {answer}
+      </Text>
+    </View>
+  );
+}
+
 export default function Paywall() {
   /**
    * Only the claims this app can actually make.
@@ -40,7 +65,7 @@ export default function Paywall() {
   const router = useRouter();
   const tabletColumn = useTabletColumn(640);
   const insets = useSafeAreaInsets();
-  const { colors, spacing, radius } = useTheme();
+  const { colors, spacing } = useTheme();
 
   const lifetime = usePremiumStore((s) => s.lifetime);
   const offeringsResolved = usePremiumStore((s) => s.offeringsResolved);
@@ -85,56 +110,24 @@ export default function Paywall() {
       </View>
 
       <ScrollView contentContainerStyle={{ padding: spacing.xl, paddingBottom: spacing['3xl'], ...tabletColumn, flexGrow: 1, justifyContent: 'center' }}>
-        {/* Numbered, not ticked, and the promise leads.
- 
-            29 of 44 apps in this portfolio shipped one paywall file byte for
-            byte, and Apple rejected under 4.3(a) naming "multiple similar apps
-            using a repackaged app template". foldup, knotter and poursort are
-            the sharpest case: all three are rejected, and all three also shared
-            a home-screen structure that measured 1.00 identical.
- 
-            So this one leads with the no-subscription promise as the headline
-            rather than burying it in a card, and numbers what you get instead
-            of ticking it. Same claims, different page. */}
-        <Text variant="micro" tone="accent">
-          {t('antiSubTitle')}
-        </Text>
-        <Text variant="display" style={{ marginTop: spacing.xs }}>
-          {t('paywallTitle')}
-        </Text>
-        <Text variant="body" tone="muted" style={{ marginTop: spacing.sm }}>
-          {t('antiSubHeadline')}
-        </Text>
+        <Text variant="display">{t('paywallTitle')}</Text>
 
-        <View style={{ marginTop: spacing['2xl'], gap: spacing.xl }}>
-          {benefits.map((benefit, index) => (
-            <View key={benefit.title} style={{ flexDirection: 'row', gap: spacing.base }}>
-              <View
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 14,
-                  borderWidth: 1,
-                  borderColor: colors.border,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Text variant="micro" tone="accent">
-                  {index + 1}
-                </Text>
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text variant="bodyStrong">{t(benefit.title)}</Text>
-                <Text variant="caption" tone="muted" style={{ marginTop: 2 }}>
-                  {t(benefit.desc)}
-                </Text>
-              </View>
-            </View>
-          ))}
-        </View>
+        {/* The interview. Every claim on this screen — the no-subscription
+            promise and each benefit — is one question answered in prose, not
+            a ticked or numbered row. */}
+        <QA spacing={spacing} prompt={t('antiSubTitle')} answer={t('antiSubHeadline')} />
+        {benefits.map((benefit) => (
+          <QA key={benefit.title} spacing={spacing} prompt={t(benefit.title)} answer={t(benefit.desc)} />
+        ))}
 
-        <View style={{ marginTop: spacing['2xl'] }}>
+        <View
+          style={{
+            marginTop: spacing['2xl'],
+            paddingTop: spacing['2xl'],
+            borderTopWidth: StyleSheet.hairlineWidth,
+            borderTopColor: colors.border,
+          }}
+        >
           {lifetime ? (
             <Button
               label={price ? t('lifetimeAccess', { price }) : t('lifetimeAccessPlain')}
