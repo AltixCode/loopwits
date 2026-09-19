@@ -1,0 +1,35 @@
+{
+  "identifier": "BFAFCA65-5208-4F12-A578-5871F90E651D",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "4.99",
+      "familyShareable": false,
+      "internalID": "627DA0C6-DD5F-421D-99A6-CF55CC2074D4",
+      "localizations": [
+        {
+          "description": "loopwits remove ads lifetime unlock",
+          "displayName": "loopwits remove ads",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.altixcode.loopwits.removeads",
+      "referenceName": "loopwits remove ads",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "",
+    "_developerTeamID": "",
+    "_failTransactionsEnabled": false,
+    "_lastSynchronizedDate": 0,
+    "_locale": "en_US",
+    "_storefront": "USA",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 4,
+    "minor": 0
+  }
+}
