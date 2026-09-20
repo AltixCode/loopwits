@@ -91,8 +91,9 @@ describe('Play — Rulers', () => {
     await waitFor(() => expect(getByText(t('solvedTitle'))).toBeTruthy());
     expect(useProgressStore.getState().progress[DATE]?.solved.rulers).toBe(true);
 
-    await fireEvent.press(getByLabelText(t('backToToday')));
-    expect(testRouter.replace).toHaveBeenCalledWith('/');
+    expect(getByLabelText(t('nextPuzzle'))).toBeTruthy();
+    await fireEvent.press(getByLabelText(t('nextPuzzle')));
+    expect(testRouter.replace).toHaveBeenCalledWith(`/play/duo?date=${DATE}`);
   });
 });
 

@@ -7,10 +7,10 @@ import { BannerAdSlot } from '@/components/BannerAdSlot';
 import { DuoBoard } from '@/components/game/DuoBoard';
 import { OneLineBoard } from '@/components/game/OneLineBoard';
 import { RulersBoard } from '@/components/game/RulersBoard';
-import { Button, Screen, Text } from '@/components/ui';
+import { Button, IconButton, Screen, Text } from '@/components/ui';
 import { usePuzzleDay } from '@/hooks/usePuzzleDay';
 import { t } from '@/i18n';
-import type { PuzzleKind } from '@/logic/daily';
+import { PUZZLE_KINDS, type PuzzleKind } from '@/logic/daily';
 import { todayKey } from '@/logic/dateKey';
 import { isSolved as duoSolved, type DuoGrid, type DuoSymbol } from '@/logic/duo/validate';
 import { isSolved as oneLineSolved, type OneLinePath } from '@/logic/oneline/validate';
@@ -185,9 +185,29 @@ function PuzzleSession({ date, kind }: { date: string; kind: PuzzleKind }) {
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <Screen scroll>
-        <Text variant="title" style={{ marginTop: spacing.base }}>
-          {t(TITLES[kind])}
-        </Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginTop: spacing.base,
+          }}
+        >
+          <Text variant="title">{t(TITLES[kind])}</Text>
+          <IconButton
+            icon="help-circle"
+            accessibilityLabel={t('howToPlay')}
+            onPress={() => {
+              const tutorialKey =
+                kind === 'rulers'
+                  ? 'tutorialRulers'
+                  : kind === 'duo'
+                    ? 'tutorialDuo'
+                    : 'tutorialOneLine';
+              Alert.alert(t('howToPlay'), t(tutorialKey));
+            }}
+          />
+        </View>
         <Text variant="caption" tone="muted" style={{ marginTop: 2, marginBottom: spacing.lg }}>
           {t(kind === 'rulers' ? 'ruleRulers' : kind === 'duo' ? 'ruleDuo' : 'ruleOneLine')}
         </Text>
@@ -215,10 +235,24 @@ function PuzzleSession({ date, kind }: { date: string; kind: PuzzleKind }) {
                 {t('solvedIn', { time: formatSeconds(solvedSeconds) })}
               </Text>
             ) : null}
+            {(() => {
+              const currentIndex = PUZZLE_KINDS.indexOf(kind);
+              const nextKind = PUZZLE_KINDS[(currentIndex + 1) % PUZZLE_KINDS.length]!;
+              const dayProgress = useProgressStore.getState().progress[date];
+              const isNextSolved = Boolean(dayProgress?.solved[nextKind]);
+              return !isNextSolved ? (
+                <Button
+                  label={t('nextPuzzle')}
+                  onPress={() => router.replace(`/play/${nextKind}?date=${date}`)}
+                  style={{ marginTop: spacing.md }}
+                />
+              ) : null;
+            })()}
             <Button
               label={t('backToToday')}
+              variant="secondary"
               onPress={() => router.replace('/')}
-              style={{ marginTop: spacing.md }}
+              style={{ marginTop: spacing.xs }}
             />
           </View>
         ) : (
