@@ -1,38 +1,49 @@
-import { useRouter } from 'expo-router';
-import React, { useEffect } from 'react';
-import { Pressable, View } from 'react-native';
+import { useRouter } from "expo-router";
+import React, { useCallback, useEffect } from "react";
+import { Alert, Pressable, View } from "react-native";
 
-import { BannerAdSlot } from '@/components/BannerAdSlot';
-import { Screen, Text } from '@/components/ui';
-import { t } from '@/i18n';
-import { PUZZLE_KINDS, type PuzzleKind } from '@/logic/daily';
-import { todayKey } from '@/logic/dateKey';
-import { currentStreak, isDayComplete, solvedCount } from '@/logic/progress';
-import { useProgressStore } from '@/store/useProgressStore';
-import { useTheme } from '@/theme';
+import { BannerAdSlot } from "@/components/BannerAdSlot";
+import { IconButton, Screen, Text } from "@/components/ui";
+import { t } from "@/i18n";
+import { PUZZLE_KINDS, type PuzzleKind } from "@/logic/daily";
+import { todayKey } from "@/logic/dateKey";
+import { currentStreak, isDayComplete, solvedCount } from "@/logic/progress";
+import { useProgressStore } from "@/store/useProgressStore";
+import { useTheme } from "@/theme";
 
-const LABELS: Record<PuzzleKind, 'puzzleRulers' | 'puzzleDuo' | 'puzzleOneLine'> = {
-  rulers: 'puzzleRulers',
-  duo: 'puzzleDuo',
-  oneline: 'puzzleOneLine',
+const LABELS: Record<
+  PuzzleKind,
+  "puzzleRulers" | "puzzleDuo" | "puzzleOneLine"
+> = {
+  rulers: "puzzleRulers",
+  duo: "puzzleDuo",
+  oneline: "puzzleOneLine",
 };
 
-const RULES: Record<PuzzleKind, 'ruleRulers' | 'ruleDuo' | 'ruleOneLine'> = {
-  rulers: 'ruleRulers',
-  duo: 'ruleDuo',
-  oneline: 'ruleOneLine',
+const RULES: Record<PuzzleKind, "ruleRulers" | "ruleDuo" | "ruleOneLine"> = {
+  rulers: "ruleRulers",
+  duo: "ruleDuo",
+  oneline: "ruleOneLine",
 };
 
-function PuzzleRow({ kind, solved, onPress }: { kind: PuzzleKind; solved: boolean; onPress: () => void }) {
+function PuzzleRow({
+  kind,
+  solved,
+  onPress,
+}: {
+  kind: PuzzleKind;
+  solved: boolean;
+  onPress: () => void;
+}) {
   const { colors, spacing, radius } = useTheme();
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${t(LABELS[kind])} — ${solved ? t('statusSolved') : t('statusNotStarted')}`}
+      accessibilityLabel={`${t(LABELS[kind])} — ${solved ? t("statusSolved") : t("statusNotStarted")}`}
       onPress={onPress}
       style={{
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         gap: spacing.base,
         minHeight: 72,
         padding: spacing.base,
@@ -47,13 +58,16 @@ function PuzzleRow({ kind, solved, onPress }: { kind: PuzzleKind; solved: boolea
           width: 40,
           height: 40,
           borderRadius: radius.md,
-          alignItems: 'center',
-          justifyContent: 'center',
+          alignItems: "center",
+          justifyContent: "center",
           backgroundColor: solved ? colors.accent : colors.surfaceAlt,
         }}
       >
-        <Text variant="bodyStrong" color={solved ? colors.onAccent : colors.textMuted}>
-          {solved ? '✓' : '·'}
+        <Text
+          variant="bodyStrong"
+          color={solved ? colors.onAccent : colors.textMuted}
+        >
+          {solved ? "✓" : "·"}
         </Text>
       </View>
       <View style={{ flex: 1 }}>
@@ -79,6 +93,13 @@ export default function Home() {
     void hydrate();
   }, [hydrate]);
 
+  // Reachable from the very first screen, before a player has picked a
+  // puzzle to open — the per-puzzle rule text below only lands once someone
+  // already knows this is three small daily puzzles at all.
+  const showHowToPlay = useCallback(() => {
+    Alert.alert(t("howToPlay"), t("howToPlayIntroBody"));
+  }, []);
+
   const day = progress[today];
   const done = solvedCount(day);
   // The streak is only meaningful once saved progress has been read; showing a
@@ -90,24 +111,34 @@ export default function Home() {
       <Screen scroll topInset>
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            marginTop: spacing['2xl'],
+            flexDirection: "row",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            marginTop: spacing["2xl"],
           }}
         >
           <View style={{ flex: 1 }}>
-            <Text variant="display">{t('todayTitle')}</Text>
-            <Text variant="caption" tone="muted" style={{ marginTop: spacing.xs }}>
-              {t('progressOfThree', { count: done })}
+            <Text variant="display">{t("todayTitle")}</Text>
+            <Text
+              variant="caption"
+              tone="muted"
+              style={{ marginTop: spacing.xs }}
+            >
+              {t("progressOfThree", { count: done })}
             </Text>
           </View>
+          <IconButton
+            icon="help-circle"
+            accessibilityLabel={t("howToPlay")}
+            onPress={showHowToPlay}
+            style={{ marginRight: spacing.xs }}
+          />
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={t('statsTitle')}
-            onPress={() => router.push('/stats')}
+            accessibilityLabel={t("statsTitle")}
+            onPress={() => router.push("/stats")}
             style={{
-              alignItems: 'center',
+              alignItems: "center",
               minWidth: 64,
               minHeight: 44,
               paddingHorizontal: spacing.md,
@@ -116,9 +147,11 @@ export default function Home() {
               backgroundColor: colors.surface,
             }}
           >
-            <Text variant="bodyStrong">{streak === null ? '—' : String(streak)}</Text>
+            <Text variant="bodyStrong">
+              {streak === null ? "—" : String(streak)}
+            </Text>
             <Text variant="micro" tone="faint">
-              {t('streakLabel')}
+              {t("streakLabel")}
             </Text>
           </Pressable>
         </View>
@@ -144,44 +177,50 @@ export default function Home() {
             }}
           >
             <Text variant="bodyStrong" tone="accent">
-              {t('allDoneTitle')}
+              {t("allDoneTitle")}
             </Text>
             <Text variant="caption" tone="muted" style={{ marginTop: 2 }}>
-              {t('allDoneBody')}
+              {t("allDoneBody")}
             </Text>
           </View>
         ) : null}
 
-        <View style={{ flexDirection: 'row', gap: spacing.md, marginTop: spacing.xl }}>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: spacing.md,
+            marginTop: spacing.xl,
+          }}
+        >
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={t('archiveTitle')}
-            onPress={() => router.push('/archive')}
+            accessibilityLabel={t("archiveTitle")}
+            onPress={() => router.push("/archive")}
             style={{
               flex: 1,
               minHeight: 48,
-              alignItems: 'center',
-              justifyContent: 'center',
+              alignItems: "center",
+              justifyContent: "center",
               borderRadius: radius.md,
               backgroundColor: colors.surfaceAlt,
             }}
           >
-            <Text variant="callout">{t('archiveTitle')}</Text>
+            <Text variant="callout">{t("archiveTitle")}</Text>
           </Pressable>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={t('settingsTitle')}
-            onPress={() => router.push('/settings')}
+            accessibilityLabel={t("settingsTitle")}
+            onPress={() => router.push("/settings")}
             style={{
               flex: 1,
               minHeight: 48,
-              alignItems: 'center',
-              justifyContent: 'center',
+              alignItems: "center",
+              justifyContent: "center",
               borderRadius: radius.md,
               backgroundColor: colors.surfaceAlt,
             }}
           >
-            <Text variant="callout">{t('settingsTitle')}</Text>
+            <Text variant="callout">{t("settingsTitle")}</Text>
           </Pressable>
         </View>
       </Screen>
