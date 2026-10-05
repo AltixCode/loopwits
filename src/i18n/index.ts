@@ -189,7 +189,7 @@ export const translations = {
     restoredBody:
       "Tu desbloqueo de por vida vuelve a estar activo en este dispositivo.",
     noPriorPurchases:
-      "Esta cuenta de la App Store no tiene ninguna compra de Loopwits que restaurar.",
+      "Esta cuenta no tiene ninguna compra de Loopwits que restaurar.",
     nothingToRestoreTitle: "No se encontró nada",
     privacyPolicy: "Política de privacidad",
     termsOfUse: "Términos de uso",
@@ -202,7 +202,7 @@ export const translations = {
     lifetimeAccessPlain: "Desbloquea todo, para siempre",
     oneTimePayment: "Un solo pago. Sin renovaciones, sin suscripciones.",
     storeUnavailable:
-      "No se puede conectar con la App Store en este momento. Revisa tu conexión e inténtalo de nuevo.",
+      "No se puede acceder a la tienda ahora mismo. Comprueba tu conexión e inténtalo de nuevo.",
     purchaseFailed: "La compra no se completó. No se te cobró nada.",
     adsDisclosure:
       "Los anuncios son lo que mantiene Loopwits gratis. El desbloqueo de por vida los elimina para siempre.",
@@ -302,8 +302,7 @@ export const translations = {
     restoredTitle: "Content de vous revoir",
     restoredBody:
       "Votre déblocage à vie est de nouveau actif sur cet appareil.",
-    noPriorPurchases:
-      "Ce compte App Store n'a aucun achat Loopwits à restaurer.",
+    noPriorPurchases: "Ce compte n’a aucun achat Loopwits à restaurer.",
     nothingToRestoreTitle: "Rien à restaurer",
     privacyPolicy: "Politique de confidentialité",
     termsOfUse: "Conditions d’utilisation",
@@ -316,7 +315,7 @@ export const translations = {
     lifetimeAccessPlain: "Tout débloquer, pour toujours",
     oneTimePayment: "Un seul paiement. Ni renouvellement, ni abonnement.",
     storeUnavailable:
-      "Impossible de joindre l'App Store pour le moment. Vérifiez votre connexion et réessayez.",
+      "Impossible d’accéder à la boutique pour le moment. Vérifie ta connexion et réessaie.",
     purchaseFailed: "L'achat n'a pas abouti. Vous n'avez pas été débité.",
     adsDisclosure:
       "Ce sont les publicités qui rendent Loopwits gratuit. Le déblocage à vie les supprime pour de bon.",
@@ -418,7 +417,7 @@ export const translations = {
     restoredBody:
       "Deine lebenslange Freischaltung ist auf diesem Gerät wieder aktiv.",
     noPriorPurchases:
-      "Für dieses App-Store-Konto wurde kein Loopwits-Kauf gefunden.",
+      "Für dieses Konto gibt es keinen Loopwits-Kauf zum Wiederherstellen.",
     nothingToRestoreTitle: "Nichts gefunden",
     privacyPolicy: "Datenschutzerklärung",
     termsOfUse: "Nutzungsbedingungen",
@@ -431,7 +430,7 @@ export const translations = {
     lifetimeAccessPlain: "Alles freischalten, für immer",
     oneTimePayment: "Einmalige Zahlung. Keine Verlängerung, kein Abo.",
     storeUnavailable:
-      "Der App Store ist gerade nicht erreichbar. Prüfe deine Verbindung und versuche es erneut.",
+      "Der Store ist gerade nicht erreichbar. Überprüfe deine Verbindung und versuche es erneut.",
     purchaseFailed:
       "Der Kauf wurde nicht abgeschlossen. Es wurde nichts abgebucht.",
     adsDisclosure:
@@ -533,7 +532,7 @@ export const translations = {
     restoredTitle: "С возвращением",
     restoredBody: "Пожизненная разблокировка снова активна на этом устройстве.",
     noPriorPurchases:
-      "Для этой учётной записи App Store не найдено покупок Loopwits для восстановления.",
+      "В этом аккаунте нет покупки Loopwits, которую можно восстановить.",
     nothingToRestoreTitle: "Ничего не найдено",
     privacyPolicy: "Политика конфиденциальности",
     termsOfUse: "Условия использования",
@@ -546,7 +545,7 @@ export const translations = {
     lifetimeAccessPlain: "Открыть всё навсегда",
     oneTimePayment: "Один платёж. Без продления, без подписки.",
     storeUnavailable:
-      "Не удаётся подключиться к App Store. Проверьте соединение и попробуйте снова.",
+      "Сейчас не удаётся подключиться к магазину. Проверьте соединение и попробуйте ещё раз.",
     purchaseFailed: "Покупка не завершена. Списания не было.",
     adsDisclosure:
       "Loopwits бесплатен благодаря рекламе. Пожизненная разблокировка отключает её навсегда.",
@@ -643,7 +642,7 @@ export const translations = {
     restorePurchases: "恢复购买",
     restoredTitle: "欢迎回来",
     restoredBody: "你的终身解锁已在此设备上重新生效。",
-    noPriorPurchases: "此 App Store 账户没有可恢复的 Loopwits 购买记录。",
+    noPriorPurchases: "此账号没有可恢复的 Loopwits 购买项目。",
     nothingToRestoreTitle: "未找到可恢复项",
     privacyPolicy: "隐私政策",
     termsOfUse: "使用条款",
@@ -655,7 +654,7 @@ export const translations = {
     lifetimeAccess: "永久解锁 — {price}",
     lifetimeAccessPlain: "永久解锁全部内容",
     oneTimePayment: "一次性付款，不会续费，也不是订阅。",
-    storeUnavailable: "目前无法连接到 App Store，请检查网络连接后重试。",
+    storeUnavailable: "现在无法连接商店。请检查网络连接后重试。",
     purchaseFailed: "购买未完成，未产生任何扣款。",
     adsDisclosure: "广告是 Loopwits 保持免费的原因，终身解锁会永久关闭它们。",
     loadingPrice: "正在获取价格…",
@@ -749,7 +748,7 @@ export const translations = {
     restoredTitle: "おかえりなさい",
     restoredBody: "このデバイスで永久アンロックが再び有効になりました。",
     noPriorPurchases:
-      "このApp Storeアカウントには復元できるLoopwitsの購入履歴がありません。",
+      "このアカウントには復元できるLoopwitsの購入履歴がありません。",
     nothingToRestoreTitle: "復元できる購入はありません",
     privacyPolicy: "プライバシーポリシー",
     termsOfUse: "利用規約",
@@ -762,7 +761,7 @@ export const translations = {
     lifetimeAccessPlain: "すべてを永久にアンロック",
     oneTimePayment: "支払いは一度きり。更新も、サブスクもありません。",
     storeUnavailable:
-      "現在App Storeに接続できません。接続状況を確認してもう一度お試しください。",
+      "現在ストアに接続できません。接続を確認して、もう一度お試しください。",
     purchaseFailed: "購入が完了しませんでした。請求は発生していません。",
     adsDisclosure:
       "Loopwitsが無料なのは広告のおかげです。永久アンロックでその広告を完全にオフにします。",
@@ -861,7 +860,7 @@ export const translations = {
     restoredBody:
       "Seu desbloqueio vitalício está ativo novamente neste dispositivo.",
     noPriorPurchases:
-      "Esta conta da App Store não tem nenhuma compra do Loopwits para restaurar.",
+      "Esta conta não tem nenhuma compra do Loopwits para restaurar.",
     nothingToRestoreTitle: "Nada encontrado",
     privacyPolicy: "Política de privacidade",
     termsOfUse: "Termos de utilização",
@@ -874,7 +873,7 @@ export const translations = {
     lifetimeAccessPlain: "Desbloquear tudo, para sempre",
     oneTimePayment: "Pagamento único. Sem renovação, sem assinatura.",
     storeUnavailable:
-      "Não foi possível acessar a App Store agora. Verifique sua conexão e tente novamente.",
+      "Não é possível acessar a loja agora. Verifique sua conexão e tente novamente.",
     purchaseFailed: "A compra não foi concluída. Você não foi cobrado.",
     adsDisclosure:
       "Os anúncios são o que mantêm o Loopwits gratuito. O desbloqueio vitalício os desliga para sempre.",
@@ -973,8 +972,7 @@ export const translations = {
     restorePurchases: "구매 복원",
     restoredTitle: "다시 오신 것을 환영합니다",
     restoredBody: "이 기기에서 평생 잠금 해제가 다시 활성화되었습니다.",
-    noPriorPurchases:
-      "이 App Store 계정에는 복원할 Loopwits 구매 내역이 없습니다.",
+    noPriorPurchases: "이 계정에는 복원할 Loopwits 구매 내역이 없습니다.",
     nothingToRestoreTitle: "복원할 항목이 없습니다",
     privacyPolicy: "개인정보 처리방침",
     termsOfUse: "이용약관",
@@ -987,7 +985,7 @@ export const translations = {
     lifetimeAccessPlain: "모든 기능 영구 잠금 해제",
     oneTimePayment: "일회성 결제입니다. 갱신도, 구독도 없습니다.",
     storeUnavailable:
-      "지금은 App Store에 연결할 수 없습니다. 연결 상태를 확인한 후 다시 시도하세요.",
+      "지금은 스토어에 연결할 수 없습니다. 인터넷 연결을 확인하고 다시 시도해 주세요.",
     purchaseFailed: "구매가 완료되지 않았습니다. 요금은 청구되지 않았습니다.",
     adsDisclosure:
       "Loopwits가 무료인 이유는 광고 덕분입니다. 평생 잠금 해제는 그 광고를 영구히 꺼 줍니다.",
@@ -1083,7 +1081,7 @@ export const translations = {
     restoredBody:
       "Il tuo sblocco a vita è di nuovo attivo su questo dispositivo.",
     noPriorPurchases:
-      "Questo account App Store non ha acquisti di Loopwits da ripristinare.",
+      "Questo account non ha acquisti di Loopwits da ripristinare.",
     nothingToRestoreTitle: "Nessun acquisto trovato",
     privacyPolicy: "Informativa sulla privacy",
     termsOfUse: "Condizioni d’uso",
@@ -1096,7 +1094,7 @@ export const translations = {
     lifetimeAccessPlain: "Sblocca tutto, per sempre",
     oneTimePayment: "Pagamento unico. Nessun rinnovo, nessun abbonamento.",
     storeUnavailable:
-      "Al momento non è possibile raggiungere l'App Store. Controlla la connessione e riprova.",
+      "Al momento non è possibile accedere allo store. Controlla la connessione e riprova.",
     purchaseFailed:
       "L'acquisto non è andato a buon fine. Non ti è stato addebitato nulla.",
     adsDisclosure:
@@ -1197,7 +1195,7 @@ export const translations = {
     restoredTitle: "Tekrar hoş geldin",
     restoredBody: "Ömür boyu kilit açma bu cihazda yeniden etkinleşti.",
     noPriorPurchases:
-      "Bu App Store hesabında geri yüklenecek bir Loopwits satın alımı bulunamadı.",
+      "Bu hesapta geri yüklenecek bir Loopwits satın alımı yok.",
     nothingToRestoreTitle: "Geri yüklenecek bir şey bulunamadı",
     privacyPolicy: "Gizlilik politikası",
     termsOfUse: "Kullanım koşulları",
@@ -1210,7 +1208,7 @@ export const translations = {
     lifetimeAccessPlain: "Her şeyin kilidini sonsuza dek aç",
     oneTimePayment: "Tek seferlik ödeme. Yenileme yok, abonelik yok.",
     storeUnavailable:
-      "App Store'a şu anda ulaşılamıyor. Bağlantını kontrol edip tekrar dene.",
+      "Şu anda mağazaya ulaşılamıyor. Bağlantını kontrol edip tekrar dene.",
     purchaseFailed: "Satın alma tamamlanmadı. Herhangi bir ücret alınmadı.",
     adsDisclosure:
       "Loopwits'i ücretsiz tutan şey reklamlar. Ömür boyu kilit açma onları kalıcı olarak kapatır.",
@@ -1307,7 +1305,7 @@ export const translations = {
     restoredTitle: "مرحبًا بعودتك",
     restoredBody: "إلغاء القفل مدى الحياة مفعّل مجددًا على هذا الجهاز.",
     noPriorPurchases:
-      "لا توجد عملية شراء لتطبيق Loopwits يمكن استعادتها لهذا الحساب في App Store.",
+      "لا توجد في هذا الحساب عملية شراء للعبة Loopwits يمكن استعادتها.",
     nothingToRestoreTitle: "لم يُعثر على شيء",
     privacyPolicy: "سياسة الخصوصية",
     termsOfUse: "شروط الاستخدام",
@@ -1320,7 +1318,7 @@ export const translations = {
     lifetimeAccessPlain: "افتح كل شيء إلى الأبد",
     oneTimePayment: "دفعة واحدة فقط. بلا تجديد وبلا اشتراك.",
     storeUnavailable:
-      "يتعذر الوصول إلى App Store الآن. تحقق من اتصالك وحاول مرة أخرى.",
+      "يتعذر الاتصال بالمتجر الآن. تحقق من اتصالك وحاول مرة أخرى.",
     purchaseFailed: "لم تكتمل عملية الشراء. لم يُخصم منك أي مبلغ.",
     adsDisclosure:
       "الإعلانات هي ما يبقي Loopwits مجانيًا. إلغاء القفل مدى الحياة يوقفها نهائيًا.",
@@ -1415,8 +1413,7 @@ export const translations = {
     restorePurchases: "بازیابی خرید",
     restoredTitle: "خوش برگشتی",
     restoredBody: "باز کردن دائمی قفل دوباره روی این دستگاه فعال شد.",
-    noPriorPurchases:
-      "هیچ خرید Loopwits برای بازیابی در این حساب App Store یافت نشد.",
+    noPriorPurchases: "در این حساب خریدی از Loopwits برای بازیابی وجود ندارد.",
     nothingToRestoreTitle: "چیزی برای بازیابی پیدا نشد",
     privacyPolicy: "سیاست حریم خصوصی",
     termsOfUse: "شرایط استفاده",
@@ -1429,7 +1426,7 @@ export const translations = {
     lifetimeAccessPlain: "باز کردن همه‌چیز برای همیشه",
     oneTimePayment: "پرداخت یک‌باره. بدون تمدید، بدون اشتراک.",
     storeUnavailable:
-      "در حال حاضر اتصال به App Store ممکن نیست. اتصال خود را بررسی کن و دوباره امتحان کن.",
+      "فعلاً نمی‌توان به فروشگاه متصل شد. اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.",
     purchaseFailed: "خرید کامل نشد. هیچ مبلغی از شما کسر نشد.",
     adsDisclosure:
       "تبلیغات چیزی است که Loopwits را رایگان نگه می‌دارد. باز کردن دائمی قفل آن‌ها را برای همیشه خاموش می‌کند.",
@@ -1528,7 +1525,7 @@ export const translations = {
     restoredBody:
       "Το ξεκλείδωμα εφ' όρου ζωής είναι ξανά ενεργό σε αυτή τη συσκευή.",
     noPriorPurchases:
-      "Δεν βρέθηκε αγορά Loopwits προς επαναφορά για αυτόν τον λογαριασμό App Store.",
+      "Αυτός ο λογαριασμός δεν έχει αγορά του Loopwits για επαναφορά.",
     nothingToRestoreTitle: "Δεν βρέθηκε τίποτα",
     privacyPolicy: "Πολιτική απορρήτου",
     termsOfUse: "Όροι χρήσης",
@@ -1541,7 +1538,7 @@ export const translations = {
     lifetimeAccessPlain: "Ξεκλείδωσε τα πάντα για πάντα",
     oneTimePayment: "Μία μόνο πληρωμή. Χωρίς ανανέωση, χωρίς συνδρομή.",
     storeUnavailable:
-      "Δεν είναι δυνατή η σύνδεση με το App Store αυτή τη στιγμή. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.",
+      "Δεν είναι δυνατή η σύνδεση με το κατάστημα αυτήν τη στιγμή. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.",
     purchaseFailed: "Η αγορά δεν ολοκληρώθηκε. Δεν χρεώθηκες.",
     adsDisclosure:
       "Οι διαφημίσεις είναι αυτό που κρατά το Loopwits δωρεάν. Το ξεκλείδωμα εφ' όρου ζωής τις απενεργοποιεί οριστικά.",
