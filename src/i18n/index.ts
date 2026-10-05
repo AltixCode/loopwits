@@ -114,6 +114,8 @@ export const translations = {
     ruleOneLine:
       "One unbroken line through every cell, reaching the numbers in order.",
     howToPlay: "How to play",
+    howToPlayIntroBody:
+      "Every day brings three tiny puzzles to solve — Rulers, Duo, and One Line. Tap any of them below to start. Once you're in, tap the ? at the top any time for simple, step-by-step rules.",
     tutorialRulers:
       "Tap empty cells to place a marker or an ×. Each row, column, and color region must have exactly one marker. Markers cannot touch each other, even diagonally.",
     tutorialDuo:
@@ -225,6 +227,8 @@ export const translations = {
     ruleOneLine:
       "Una línea continua por todas las casillas, tocando los números en orden.",
     howToPlay: "Cómo jugar",
+    howToPlayIntroBody:
+      "Cada día trae tres pequeños rompecabezas para resolver: Rulers, Duo y One Line. Toca cualquiera de ellos abajo para empezar. Una vez dentro, toca el ? de arriba cuando quieras ver las reglas explicadas paso a paso.",
     tutorialRulers:
       "Toca celdas vacías para colocar un marcador o una ×. Cada fila, columna y región debe tener exactamente un marcador. Los marcadores no pueden tocarse, ni siquiera en diagonal.",
     tutorialDuo:
@@ -338,6 +342,8 @@ export const translations = {
     ruleOneLine:
       "Un trait continu par toutes les cases, en atteignant les numéros dans l’ordre.",
     howToPlay: "Comment jouer",
+    howToPlayIntroBody:
+      "Chaque jour vous propose trois petits casse-tête à résoudre : Rulers, Duo et One Line. Touchez l'un d'eux ci-dessous pour commencer. Une fois à l'intérieur, touchez le ? en haut à tout moment pour des règles simples, expliquées étape par étape.",
     tutorialRulers:
       "Touchez les cases pour placer un marqueur ou une ×. Chaque ligne, colonne et zone doit avoir exactement un marqueur. Deux marqueurs ne peuvent pas se toucher, même en diagonale.",
     tutorialDuo:
@@ -453,6 +459,8 @@ export const translations = {
     ruleOneLine:
       "Eine durchgehende Linie durch jedes Feld, die Zahlen der Reihe nach.",
     howToPlay: "Spielanleitung",
+    howToPlayIntroBody:
+      "Jeden Tag warten drei kleine Rätsel auf dich: Rulers, Duo und One Line. Tippe unten auf eines, um zu starten. Sobald du drin bist, tippe jederzeit oben auf das ?, für einfache Regeln Schritt für Schritt.",
     tutorialRulers:
       "Tippe auf leere Felder, um eine Markierung oder ein × zu setzen. Jede Zeile, Spalte und Region muss genau eine Markierung enthalten. Markierungen dürfen sich nicht berühren.",
     tutorialDuo:
@@ -563,6 +571,8 @@ export const translations = {
     ruleOneLine:
       "Одна непрерывная линия через все клетки, к числам по порядку.",
     howToPlay: "Как играть",
+    howToPlayIntroBody:
+      "Каждый день — три маленькие головоломки: Rulers, Duo и One Line. Нажмите на любую из них ниже, чтобы начать. Внутри в любой момент нажмите на ? вверху экрана — там простые правила по шагам.",
     tutorialRulers:
       "Нажимайте на клетки, чтобы ставить метку или ×. В каждой строке, столбце и цветной области должна быть ровно одна метка. Метки не могут касаться друг друга, даже по диагонали.",
     tutorialDuo:
@@ -665,6 +675,8 @@ export const translations = {
     ruleDuo: "每行每列太阳与月亮数量相同，且不得连续出现三个相同图案。",
     ruleOneLine: "一笔画连通所有格子，并按顺序经过数字。",
     howToPlay: "玩法说明",
+    howToPlayIntroBody:
+      "每天都有三个小谜题等你解决：Rulers、Duo 和 One Line。点击下方任意一个开始游戏。进入后，随时点击顶部的 ? 即可查看简单的分步玩法说明。",
     tutorialRulers:
       "点击空格放置标记或 ×。每行、每列以及每个彩色区域必须恰好有一个标记。标记之间不能相邻（包括对角线）。",
     tutorialDuo:
@@ -774,6 +786,8 @@ export const translations = {
     ruleDuo: "各行・各列で太陽と月を同数に。同じものが3つ続いてはいけません。",
     ruleOneLine: "すべてのマスを一筆でつなぎ、数字を順番にたどります。",
     howToPlay: "遊び方",
+    howToPlayIntroBody:
+      "毎日3つの小さなパズルが登場します：Rulers、Duo、One Line。下から好きなパズルをタップして始めましょう。パズル画面に入ったら、いつでも上部の？をタップすると、わかりやすい手順で遊び方を確認できます。",
     tutorialRulers:
       "マスをタップしてマーカーまたは×を配置します。各行・列・色エリアにマーカーは1つだけ。マーカー同士は斜めも含め隣接できません。",
     tutorialDuo:
@@ -886,6 +900,8 @@ export const translations = {
     ruleOneLine:
       "Uma linha contínua por todas as casas, alcançando os números por ordem.",
     howToPlay: "Como jogar",
+    howToPlayIntroBody:
+      "Todos os dias trazem três pequenos quebra-cabeças para resolver: Rulers, Duo e One Line. Toque em qualquer um deles abaixo para começar. Depois de entrar, toque no ? no topo a qualquer momento para ver as regras explicadas passo a passo.",
     tutorialRulers:
       "Toque nas células para colocar um marcador ou um ×. Cada linha, coluna e região deve ter exatamente um marcador. Os marcadores não podem se tocar, nem na diagonal.",
     tutorialDuo:
@@ -992,6 +1008,8 @@ export const translations = {
     ruleDuo: "각 행과 열에 해와 달을 같은 수로. 같은 것이 셋 연속은 안 됩니다.",
     ruleOneLine: "모든 칸을 한 번에 잇는 선으로, 숫자를 순서대로 지나갑니다.",
     howToPlay: "게임 방법",
+    howToPlayIntroBody:
+      "매일 세 가지 작은 퍼즐이 기다리고 있어요: Rulers, Duo, One Line. 아래에서 하나를 탭해 시작하세요. 퍼즐에 들어가면 언제든 상단의 ?를 탭해 쉬운 단계별 규칙을 볼 수 있어요.",
     tutorialRulers:
       "빈 칸을 탭하여 마커나 ×를 놓으세요. 각 행, 열, 색상 영역마다 마커가 정확히 하나씩 있어야 합니다. 마커끼리는 대각선으로도 닿을 수 없습니다.",
     tutorialDuo:
@@ -1105,6 +1123,8 @@ export const translations = {
     ruleOneLine:
       "Una linea continua per ogni casella, toccando i numeri in ordine.",
     howToPlay: "Come giocare",
+    howToPlayIntroBody:
+      "Ogni giorno porta tre piccoli puzzle da risolvere: Rulers, Duo e One Line. Tocca uno di quelli qui sotto per iniziare. Una volta dentro, tocca il ? in alto in qualsiasi momento per regole semplici, spiegate passo dopo passo.",
     tutorialRulers:
       "Tocca le celle per inserire un cerchio o una ×. Ogni riga, colonna e regione deve contenere esattamente un indicatore. Gli indicatori non possono toccarsi, neanche in diagonale.",
     tutorialDuo:
@@ -1214,6 +1234,8 @@ export const translations = {
       "Her satır ve sütunda eşit sayıda güneş ve ay. Asla üç aynı yan yana.",
     ruleOneLine: "Tüm kareleri geçen tek bir çizgi, sayılara sırayla uğrar.",
     howToPlay: "Nasıl oynanır",
+    howToPlayIntroBody:
+      "Her gün çözülmeyi bekleyen üç küçük bulmaca var: Rulers, Duo ve One Line. Başlamak için aşağıdakilerden birine dokunun. İçeri girince istediğiniz an üstteki ? işaretine dokunarak adım adım basit kuralları görebilirsiniz.",
     tutorialRulers:
       "İşaret veya × koymak için boş karelere dokunun. Her satır, sütun ve bölgede tam bir işaret olmalıdır. İşaretler çapraz dahil birbirine değemez.",
     tutorialDuo:
@@ -1321,6 +1343,8 @@ export const translations = {
       "عدد متساوٍ من الشموس والأقمار في كل صف وعمود، ولا ثلاثة متماثلة متتالية.",
     ruleOneLine: "خط واحد متصل يمر بكل الخانات ويصل الأرقام بالترتيب.",
     howToPlay: "طريقة اللعب",
+    howToPlayIntroBody:
+      "كل يوم يجلب ثلاثة ألغاز صغيرة لحلّها: Rulers وDuo وOne Line. المس أيًا منها أدناه للبدء. وبعد الدخول، المس علامة ؟ في الأعلى في أي وقت لعرض قواعد بسيطة خطوة بخطوة.",
     tutorialRulers:
       "المس الخانات الفارغة لوضع علامة أو ×. يجب أن يحتوي كل صف وعمود ومنطقة ملونة على علامة واحدة فقط. لا يمكن أن تتلامس العلامات حتى قطريًا.",
     tutorialDuo:
@@ -1429,6 +1453,8 @@ export const translations = {
       "در هر سطر و ستون تعداد خورشید و ماه برابر. هرگز سه تای یکسان پشت‌سرهم.",
     ruleOneLine: "یک خط پیوسته از همهٔ خانه‌ها که اعداد را به ترتیب می‌پیماید.",
     howToPlay: "راهنمای بازی",
+    howToPlayIntroBody:
+      "هر روز سه پازل کوچک برای حل کردن دارید: Rulers، Duo و One Line. برای شروع، روی هرکدام از آن‌ها در پایین بزنید. پس از ورود، هر زمان که خواستید روی علامت ؟ در بالا بزنید تا قوانین ساده و گام‌به‌گام را ببینید.",
     tutorialRulers:
       "روی خانه‌های خالی بزنید تا نشانگر یا × بگذارید. هر سطر، ستون و ناحیه رنگی باید دقیقاً یک نشانگر داشته باشد. نشانگرها نباید به هم بچسبند.",
     tutorialDuo:
@@ -1540,6 +1566,8 @@ export const translations = {
     ruleOneLine:
       "Μία συνεχής γραμμή σε κάθε κελί, φτάνοντας τους αριθμούς με τη σειρά.",
     howToPlay: "Πώς να παίξετε",
+    howToPlayIntroBody:
+      "Κάθε μέρα φέρνει τρία μικρά παζλ προς επίλυση: Rulers, Duo και One Line. Αγγίξτε ένα από αυτά παρακάτω για να ξεκινήσετε. Μόλις μπείτε, αγγίξτε το ; πάνω όποτε θέλετε για απλούς κανόνες βήμα προς βήμα.",
     tutorialRulers:
       "Αγγίξτε τα κελιά για να τοποθετήσετε δείκτη ή ×. Κάθε γραμμή, στήλη και περιοχή πρέπει να έχει ακριβώς έναν δείκτη. Οι δείκτες δεν επιτρέπεται να αγγίζονται.",
     tutorialDuo:
